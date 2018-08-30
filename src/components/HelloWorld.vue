@@ -1,37 +1,51 @@
 <style scoped lang="scss">
-  h1, h2 {
-    font-weight: normal;
+ .loading-shap{
+  position:fixed;
+  z-index:1000000;
+  left:0;
+  top:0;
+  right:0;
+  bottom:0;
+  .shap{
+    position:absolute;
+    z-index:10;
+    left:0;
+    top:0;
+    right:0;
+    bottom:0;
+    background:rga(0,0,0,.5)
   }
-  ul {
-    list-style-type: none;
-    padding: 0;
+  .container{
+    position:absolute;
+    z-index:10;
+    left:0;
+    top:0;
+    right:0;
+    bottom:0;
+    background:rga(0,0,0,.5)
   }
-  li {
-    display: inline-block;
-    margin: 0 10px;
-  }
-  a {
-    color: #42b983;
-  }
+ }
 </style>
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <h2>Ecosystem</h2>
+  <div class="loading-shap">
+    <div class="shap"></div>
+    <div class="container">{{loadText}}</div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
+  props:{
+    loadText:{
+      type:String,
+      default:"正在加载...."
+    }
+  },
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      
     }
   }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 

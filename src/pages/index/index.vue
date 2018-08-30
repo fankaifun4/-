@@ -67,7 +67,6 @@
     background: #f6f6f2;
     overflow-y: scroll;
   }
-
 </style>
 <template>
 <div class="wrap-index">
@@ -87,16 +86,28 @@
       <router-view></router-view>
     </div>
   </div>
+  <shapload :ldtext="lxText" v-if="lxLoading"></shapload>
 </div>
 </template>
 <script>
+  import {mapMutations,mapActions} from 'vuex'
   export  default {
     data(){
       return{
         active:"fbgl"
       }
     },
+    computed:{
+      lxText(){
+        return this.$store.state.lxText
+      },
+      lxLoading(){
+        return this.$store.state.lxLoading
+      }
+    },
     mounted(){
+    },
+    methods:{
 
     },
     watch:{
