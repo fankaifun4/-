@@ -1,5 +1,5 @@
 <style scoped lang="scss">
-  .container-fluid{
+  .wrap-index{
     height: 100%;
     overflow: hidden;
     position: relative;
@@ -7,7 +7,7 @@
     margin: 0;
   }
   .top-header{
-    height: 100px;
+    height: 80px;
     background: #55a532;
     color: #fff;
     position: relative;
@@ -15,8 +15,8 @@
       height: 100%;
       float:left;
       text-align: left;
-      line-height: 100px;
-      font-size: 40px;
+      line-height: 80px;
+      font-size: 30px;
       font-weight: 700;
       padding-left:15px;
     }
@@ -26,7 +26,7 @@
     position: absolute;
     left: 0;
     right: 0;
-    top: 100px;
+    top: 80px;
     bottom: 0;
 
   }
@@ -52,6 +52,10 @@
         background: #ffeeba;
         color: #333;
       }
+      &.active{
+        background: #ffeeba;
+        color: #333;
+      }
     }
   }
   .right-body{
@@ -61,26 +65,47 @@
     bottom: 0;
     right: 0;
     background: #f6f6f2;
+    overflow-y: scroll;
   }
+
 </style>
 <template>
-<div class="container-fluid">
+<div class="wrap-index">
   <div class="top-header">
     <div class="logo">逆水寒管理</div>
   </div>
   <div class="cont-body">
     <div class="left-body">
       <ul>
-        <li>副本攻略</li>
-        <li>奇遇攻略</li>
-        <li>福利快线</li>
-        <li>新闻资讯</li>
+        <li :class="{active:this.active=='fbgl'}"  @click="$router.push({name:'fbgl'})">副本攻略</li>
+        <li :class="{active:this.active=='qygl'}"  @click="$router.push({name:'qygl'})">奇遇攻略</li>
+        <li :class="{active:this.active=='flkx'}"  @click="$router.push({name:'flkx'})">福利快线</li>
+        <li :class="{active:this.active=='xwzx'}"  @click="$router.push({name:'xwzx'})">新闻资讯</li>
       </ul>
     </div>
-    <div class="right-body"></div>
+    <div class="right-body">
+      <router-view></router-view>
+    </div>
   </div>
 </div>
 </template>
 <script>
+  export  default {
+    data(){
+      return{
+        active:"fbgl"
+      }
+    },
+    mounted(){
 
+    },
+    watch:{
+      $route(to,from){
+        if(to.name){
+          let name =to.name
+          this.active = name
+        }
+      }
+    }
+  }
 </script>

@@ -1,15 +1,9 @@
 import config from './http.config'
 import axios from 'axios'
-import store from '../store/index'
 
 axios.defaults.baseURL=config.baseUrl
 
 axios.interceptors.request.use(function (config) {
-  let token=store.state.token||sessionStorage.token
-
-  if(token){
-    config.headers['token']=token
-  }
   // 在发送请求之前做些什么
   return config;
 }, function (error) {
@@ -51,8 +45,6 @@ function requestError(promise,msg){
 }
 
 function timeoutRequest(promise,msg){
-  store.dispatch('updateIsLogin',false)
-  store.dispatch('clearToken')
   return Promise.reject({
     error:msg
   })
@@ -96,9 +88,24 @@ function all (arr,fn) {
     .then(axios.spread(fn))
 }
 
+function uploadSm(url,formData){
+  return axios({
+    url,
+    headers:{
+      'Content-Type': 'multipart/form-data'
+    },
+    method:"POST",
+    smfile:formData
+  }).then((res)=>{
+    return res
+  }).catch(error=>{
+    return error
+  })
+}
 
 export default {
   get,
   post,
-  all
+  all,
+  uploadSm
 }

@@ -4,7 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import globalComponents from './globalComponents'
-import './assets/bootstrap/css/bootstrap.min.css'
+import './assets/bootstrap/bootstrap.min.css'
 import './assets/style/font-icon/iconfont.scss'
 //公共组件
 Object.keys(globalComponents).forEach(name => {
