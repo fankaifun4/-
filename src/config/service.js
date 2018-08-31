@@ -1,11 +1,25 @@
 import config from './http.config'
 import axios from 'axios'
-
+import store from '../store/index'
 axios.defaults.baseURL=config.baseUrl
 
 const HTTPREQUEST={
   timeout:100000,
 }
+
+
+// 添加请求拦截器
+axios.interceptors.request.use(function (config) {
+  let _csrf =  store.state._csrf
+    config.headers={
+      'x-csrf-token':_csrf
+    }
+  // 在发送请求之前做些什么
+  return config;
+}, function (error) {
+  // 对请求错误做些什么
+  return Promise.reject(error);
+});
 
 function get(url,params){
   return axios({
@@ -16,7 +30,6 @@ function get(url,params){
       ...params
     }
   }).then(res=>{
-
     return res
   }).catch(error=>{
     return error
@@ -24,7 +37,7 @@ function get(url,params){
 }
 
 function post(url,params){
-  console.log(params)
+  let _csrf =  store.state._csrf
   return axios({
     url,
     ...HTTPREQUEST,

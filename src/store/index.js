@@ -5,26 +5,33 @@ Vue.use(Vuex)
 
 const state = {
   lxLoading:false,
-  lxText:"正在加载...."
+  lxText:"正在加载....",
+  _csrf:""
 }
 
 const actions={
   openShap:function({commit},onOff){
-    commit('openShap',onOff)
+    commit('OPENSHAP',onOff)
   },
   openText:function({commit},text){
     commit('OPENTEXT',text)
+  },
+  setHeader({commit},val){
+    commit('SETHEADER',val)
   }
 }
 const getters={
 
 }
 const mutations={
-  openShap:function(state,onOff){
+  OPENSHAP:function(state,onOff){
     state.lxLoading=onOff
   },
   OPENTEXT:function(state,val){
     state.lxText=val
+  },
+  SETHEADER(state,val){
+    state._csrf = val
   }
 }
 export default new Vuex.Store({
