@@ -168,7 +168,7 @@
   </div>
 </template>
 <script>
-  import {wangEditor} from '../../assets/lib/wangEditor/wangEditor'
+  import wangEditor from '../../assets/lib/wangEditor/wangEditor'
   import {uploadSM,mannageImg,addQiyu} from '../../servier/index'
   export  default {
     data(){

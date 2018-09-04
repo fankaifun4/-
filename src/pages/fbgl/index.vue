@@ -164,7 +164,7 @@
   </div>
 </template>
 <script>
-  import {wangEditor} from '../../assets/lib/wangEditor/wangEditor'
+  import  wangEditor from '../../assets/lib/wangEditor/wangEditor'
   import {uploadSM,mannageImg,addGonglue} from '../../servier/index'
   export  default {
     data(){
@@ -251,7 +251,9 @@
       async uploadToSM(file,cb){
         let formData= new FormData
         formData.append('smfile',file)
+
         let res = await uploadSM(formData)
+
         if(res.data.code=='success'){
           cb(null,res.data)
         }else{

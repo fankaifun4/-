@@ -1,8 +1,4 @@
-(function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-	typeof define === 'function' && define.amd ? define(factory) :
-	(global.wangEditor = factory());
-}(this, (function () { 'use strict';
+'use strict';
 
 /*
     poly-fill
@@ -4670,6 +4666,5 @@ document.getElementsByTagName('HEAD').item(0).appendChild(style);
 // 返回
 var index = window.wangEditor || Editor;
 
-return index;
+export default index
 
-})));

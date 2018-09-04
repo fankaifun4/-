@@ -10,10 +10,6 @@ const HTTPREQUEST={
 
 // 添加请求拦截器
 axios.interceptors.request.use(function (config) {
-  let _csrf =  store.state._csrf
-    config.headers={
-      'x-csrf-token':_csrf
-    }
   // 在发送请求之前做些什么
   return config;
 }, function (error) {
@@ -60,7 +56,7 @@ function uploadSm(url,formData){
     url,
     method:"POST",
     headers:{
-      'Content-Type':'application/x-www-form-urlencoded'
+      'Content-Type':'multipart/form-data'
     },
     data:formData
   }).then((res)=>{
