@@ -19,3 +19,8 @@ export const addNews = (title,createdtime,content)=> http.post('/api/mannage/add
 
 //login
 export const login = (username,pswd)=>http.post('/api/mannage/admin',{username,pswd})
+
+
+//
+//添加御剑情缘咖啡屋
+export const addCoffeHouse = (title,method,content,imgs)=> http.post('/api/mannage/addYjqyComm',{title,method,content,imgs})

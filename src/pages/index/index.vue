@@ -56,6 +56,10 @@
         background: #ffeeba;
         color: #333;
       }
+      &.title_h{
+        background:#000;
+        color:#fff;
+      }
     }
   }
   .right-body{
@@ -78,6 +82,7 @@
       height: 200px;
     }
   }
+
 </style>
 <template>
 <div class="wrap-index">
@@ -103,10 +108,13 @@
     <div class="cont-body">
       <div class="left-body">
         <ul>
+          <li class="title_h">逆水寒</li>
           <li :class="{active:this.active=='fbgl'}"  @click="$router.push({name:'fbgl'})">副本攻略</li>
           <li :class="{active:this.active=='qygl'}"  @click="$router.push({name:'qygl'})">奇遇攻略</li>
           <li :class="{active:this.active=='flkx'}"  @click="$router.push({name:'flkx'})">八卦客栈</li>
           <li :class="{active:this.active=='xwzx'}"  @click="$router.push({name:'xwzx'})">新闻资讯</li>
+          <li class="title_h">御剑情缘</li>
+          <li :class="{active:this.active=='yjqy'}"  @click="$router.push({name:'yjqy'})">御剑情缘</li>
         </ul>
       </div>
       <div class="right-body">

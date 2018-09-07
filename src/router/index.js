@@ -26,6 +26,11 @@ export default new Router({
           path: '/xwzx',
           name: 'xwzx',
           component: r => require.ensure([], () => r(require('../pages/xwzx/index.vue')), 'index')
+        },
+        {
+          path: '/yjqy',
+          name: 'yjqy',
+          component: r => require.ensure([], () => r(require('../pages/yjqy_kfw/index.vue')), 'index')
         }
       ]
     },
